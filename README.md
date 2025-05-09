@@ -6,7 +6,7 @@
 - **`stereolabs/zed`**: ZED2_SDK only container
 - **`zed_ros2_desktop_u22.04_sdk_4.2.3_cuda_12.6.3`**: Custom ZED2 + Ros2 Humble container
 - **`zed_ros2_desktop_u22.04_sdk_4.2.3_cuda_12.6.3_rviz2`**: Custom ZED2 + Ros2 Humble + rviz2 container
-    - (real_world → Camera sdk + ros_wrapper→ sensor_msgs/Image)
+    - real_world → Camera sdk + ros_wrapper→ sensor_msgs/Image
 
 ## :gear: How to build & Run
 ```commandline
