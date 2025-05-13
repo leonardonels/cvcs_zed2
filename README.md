@@ -16,6 +16,12 @@ sudo apt-get update
 sudo apt-get -y install cuda
 ```
 ```commandline
+export PATH=/usr/local/cuda/bin:\$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:\$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/compat:\$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
+```
+```commandline
 docker run -it  --gpus all --runtime nvidia --privileged -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /dev:/dev -e NVIDIA_DRIVER_CAPABILITIES=all zed_ros2_desktop_u22.04_sdk_4.2.3_cuda_12.6.3_rviz2
 ```
 ```commandline
