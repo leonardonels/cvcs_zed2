@@ -2,7 +2,7 @@
     <h1>ZED2 Wiki</h1>
 </div>
 
-## :open_file_folder: What's in this repo [XAVIER]
+## :open_file_folder: Docs [XAVIER]
 - [**JetPAck 5.1.5**](https://docs.nvidia.com/jetson/archives/jetpack-archived/jetpack-515/release-notes/index.html)
 - [**ROS2 FOXY**](https://docs.ros.org/en/foxy/index.html)
 - [**ZED SDK 5.0**](https://github.com/leonardonels/cvcs_zed2/edit/main/README.md)
