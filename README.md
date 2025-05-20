@@ -7,7 +7,9 @@
 - [**ZED SDK 4.2.5 WRAPPER FOR ROS2**](https://github.com/stereolabs/zed-ros2-wrapper)
 - [**ZED ROS2 EXAMPLES**](https://github.com/stereolabs/zed-ros2-examples)
     - real_world → Camera sdk + ros_wrapper → sensor_msgs/Image
-- [**YOLO ROS2 HUMBLE DOCKER**](https://github.com/mgonzs13/yolo_ros/tree/main?tab=readme-ov-file) 
+- [**YOLO ROS2 HUMBLE DOCKER**](https://github.com/mgonzs13/yolo_ros/tree/main?tab=readme-ov-file)
+    - sensor_msgs/Image → yolo_ros → ??
+  
 
 ## :gear: How to build & Run
 ```commandline
