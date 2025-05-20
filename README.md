@@ -7,6 +7,7 @@
 - [**ZED SDK 4.2.5 WRAPPER FOR ROS2**](https://github.com/stereolabs/zed-ros2-wrapper)
 - [**ZED ROS2 EXAMPLES**](https://github.com/stereolabs/zed-ros2-examples)
     - real_world → Camera sdk + ros_wrapper → sensor_msgs/Image
+- [**YOLO ROS2 HUMBLE DOCKER**](https://github.com/mgonzs13/yolo_ros/tree/main?tab=readme-ov-file) 
 
 ## :gear: How to build & Run
 ```commandline
@@ -14,6 +15,9 @@ docker run -it  --gpus all --runtime nvidia --privileged --network host -e DISPL
 ```
 ```commandline
 ros2 launch zed_display_rviz2 display_zed_cam.launch.py camera_model:=zed2
+```
+```commandline
+ros2 launch yolo_bringup yolov8.launch.py
 ```
 
 ## :abacus: Parameters [WIP]
