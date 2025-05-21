@@ -22,7 +22,7 @@ ros2 launch zed_display_rviz2 display_zed_cam.launch.py camera_model:=zed2
 ros2 launch zed_display_rviz2 display_zed_cam.launch.py camera_model:=<camera_model>
 ```
 ```commandline
-ros2 launch yolo_bringup yolov8.launch.py
+ros2 launch yolo_bringup yolov8.launch.py input_image_topic:=/zed/zed_node/left/image_rect_color model:=best.pt
 ```
 
 ## :abacus: Parameters [WIP]
