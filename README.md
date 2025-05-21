@@ -19,6 +19,9 @@ docker run -it  --gpus all --runtime nvidia --privileged --network host -e DISPL
 ros2 launch zed_display_rviz2 display_zed_cam.launch.py camera_model:=zed2
 ```
 ```commandline
+ros2 launch zed_display_rviz2 display_zed_cam.launch.py camera_model:=<camera_model>
+```
+```commandline
 ros2 launch yolo_bringup yolov8.launch.py
 ```
 
