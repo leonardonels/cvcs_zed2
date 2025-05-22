@@ -4,14 +4,77 @@
 
 ## :open_file_folder: Docs [HP-4060]
 - [**ROS2 HUMBLE**](https://docs.ros.org/en/humble/Installation.html)
-- [**ZED SDK 4.2.5 WRAPPER FOR ROS2**](https://github.com/stereolabs/zed-ros2-wrapper)
-- [**ZED ROS2 EXAMPLES**](https://github.com/stereolabs/zed-ros2-examples)
+- [**ZED SDK 4.2.5**](https://www.stereolabs.com/en-it/developers/release/4.2)
+- [**ZED WRAPPER FOR ROS2**](https://github.com/stereolabs/zed-ros2-wrapper)
     - real_world → Camera sdk + ros_wrapper → sensor_msgs/Image
-- [**YOLO ROS2 HUMBLE DOCKER**](https://github.com/mgonzs13/yolo_ros/tree/main?tab=readme-ov-file)
+- [**WEBCAM ROS2 NODE**](https://github.com/leonardonels/webcam_ros2_node.git)
+    - real_world → webcam ros2 node → sensor_msgs/Image
+- [**YOLO ROS2 HUMBLE**](https://github.com/mgonzs13/yolo_ros/tree/main?tab=readme-ov-file)
     - sensor_msgs/Image → yolo_ros → ??
   
 
 ## :gear: How to build & Run
+> first download and install the SDK
+```commandline
+cd ~/Downloads
+sudo apt install zstd
+chmod +x ZED_SDK_Ubuntu22_cuda12.1_v4.2.5.zstd.run
+./ZED_SDK_Ubuntu22_cuda12.1_v4.2.5.zstd.run
+```
+> next install the ros2 wrapper from stereolabs, **make sure to install it from a release version, not from the main branch!!**
+```commandline
+cd ~/ros2_ws/src
+sudo apt install ros-humble-zed-msgs
+git clone https://github.com/stereolabs/zed-ros2-wrapper.git
+cd zed-ros2-wrapper
+git checkout -b origin/master humble-v4.2.5
+cd ~/ros2_ws
+colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release --parallel-workers $(nproc)
+```
+> to run the wrapper
+```commandline
+cd ~/ros2_ws
+source install/setup.bash
+ros2 launch zed_wrapper zed_camera.launch.py  camera_model:=zed2
+```
+> to use the webcam instead, but first prepare the virtual environment
+```commandline
+cd ~/ros2_ws
+python3 -m venv .venv
+source .venv/bin/activate
+```
+> and then the camera node
+```commandline
+cd ~/ros2_ws/src
+git clone https://github.com/leonardonels/webcam_ros2_node.git
+cd ~/ros2_ws
+colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release --parallel-workers $(nproc)
+ros2 launch webcam_publisher webcam_launch.py
+```
+> install the yolo ros node, but first prepare the virtual environment
+```commandline
+cd ~/ros2_ws
+python3 -m venv .venv
+source .venv/bin/activate
+```
+> next build the yolo node
+```commandline
+cd ~/ros2_ws/src
+git clone https://github.com/mgonzs13/yolo_ros.git
+pip3 install -r yolo_ros/requirements.txt
+cd ~/ros2_ws
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release --parallel-workers $(nproc)
+```
+> at last start the node
+```commandline
+cd ~/ros2_ws
+source .venv/bin/activate
+export PYTHONPATH=$PYTHONPATH:~/ros2_ws/.venv/lib/python3.10/site-packages
+ros2 launch yolo_bringup yolo.launch.py model:=best.pt input_image_topic:=camera/image_raw
+```
+
+> extras...
 ```commandline
 docker run -it  --gpus all --runtime nvidia --privileged --network host -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /dev:/dev -e NVIDIA_DRIVER_CAPABILITIES=all <docker image id>
 ```
