@@ -1,0 +1,18 @@
+[submodule "yolo"]
+	path = yolo
+	url = https://github.com/leonardonels/yolo_ros.git
+[submodule "localisation"]
+	path = localisation
+	url = https://github.com/leonardonels/bbox2marray_node.git
+[submodule "mapping"]
+	path = mapping
+	url = https://github.com/leonardonels/cone_mapper.git
+[submodule "planning"]
+	path = planning
+	url = https://github.com/leonardonels/color_planner.git
+[submodule "debug"]
+	path = debug
+	url = https://github.com/leonardonels/webcam_ros2_node.git
+[submodule "zed2"]
+	path = zed2
+	url = https://github.com/stereolabs/zed-ros-wrapper.git
